@@ -137,6 +137,15 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application">
+      <module name="lucene-web-crawler" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
