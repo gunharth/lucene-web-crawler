@@ -13,6 +13,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
+import org.apache.lucene.queryparser.classic.QueryParserBase;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
 
@@ -37,11 +38,13 @@ public class SearchFiles {
             // MultifiedQueryParser can search multiple fields in the document objects
             // using the same parser instance.
             MultiFieldQueryParser mfparser = new MultiFieldQueryParser(fields, analyzer);
+            //mfparser.setDefaultOperator(QueryParserBase.AND_OPERATOR);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
             // Parse the query and store it in a Query Object
             Query q = mfparser.parse(query);
+            System.out.print(q);
 
             System.out.println("\nSearching For: " + query + "\n");
 
