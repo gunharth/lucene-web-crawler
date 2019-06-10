@@ -22,8 +22,7 @@ public class Main
         }
         else {
             System.out.print("Invalid command line arguments. Must be run as follows:\n");
-            System.out.print("java -jar IR P02.jar [seed URL] [crawl depth] [path to index folder] [query]\n");
-            //return;
+            System.out.print("[seed URL] [crawl depth] [path to index folder] [query]\n");
         }
     }
 }
