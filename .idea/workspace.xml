@@ -151,7 +151,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560185557069" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560185797712" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -172,7 +172,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gunicode.lucene_web_crawler.Main" />
       <module name="lucene-web-crawler" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;http://wappen.tiroler-landesmuseen.at:81/namen.php&quot; &quot;1&quot; &quot;./search-index&quot; &quot;hall&quot; &quot;&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;http://wappen.tiroler-landesmuseen.at:81/namen.php&quot; &quot;1&quot; &quot;./search-index&quot; &quot;hall&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gunicode.lucene_web_crawler.*" />
