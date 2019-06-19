@@ -114,6 +114,13 @@ public class Crawler {
 
             // index the current doc
             System.out.println("Adding " + url);
+            doc.select("form").remove(); // remove the form from the html
+            //doc.select("button").remove(); // remove the form from the html
+            doc.select("div#header").remove();
+            doc.select("div#navigation").remove();
+            doc.select("div.tab").remove();
+            doc.select("div#footer").remove();
+
             IndexFiles.indexDoc(writer, doc);
 
             // add the url to the indexedPages HashSet

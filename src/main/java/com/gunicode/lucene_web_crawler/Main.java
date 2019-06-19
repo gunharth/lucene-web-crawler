@@ -11,7 +11,7 @@ public class Main
             int crawlDepth = Integer.parseInt(args[1]);
             String indexPath = args[2];
             String query = args[3];
-            System.out.print(seedUrl);
+            System.out.println(seedUrl);
 
             // create a crawler object and call the startCrawl method by passing in
             // the seed url, crawl depth, and index path
@@ -21,8 +21,8 @@ public class Main
             SearchFiles.search(indexPath, query);
         }
         else {
-            System.out.print("Invalid command line arguments. Must be run as follows:\n");
-            System.out.print("[seed URL] [crawl depth] [path to index folder] [query]\n");
+            System.out.println("Invalid command line arguments. Must be run as follows:\n");
+            System.out.println("[seed URL] [crawl depth] [path to index folder] [query]\n");
         }
     }
 }

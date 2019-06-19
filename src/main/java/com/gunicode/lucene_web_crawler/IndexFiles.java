@@ -16,6 +16,7 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
 import org.tartarus.snowball.ext.PorterStemmer;
 
 import java.io.IOException;
@@ -34,12 +35,14 @@ public class IndexFiles {
             // Initialize a StandardAnalyzer object. This analyzer converts tokens
             // to lowercase and filters out stopwords
             //Analyzer analyzer = new StandardAnalyzer();
+
             Analyzer analyzer = new GermanAnalyzer();
 
             CharArraySet stopSet = CharArraySet.copy(GermanAnalyzer.getDefaultStopSet());
+            System.out.println(stopSet);
             stopSet.add("ritter");
-            System.out.print(stopSet);
-            //Analyzer analyzer = new GermanAnalyzer(stopSet);
+            System.out.println(stopSet);
+            Analyzer analyzer = new GermanAnalyzer(stopSet);
 
             // IndexWriterConfig stores all the configuration parameters for IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
@@ -77,7 +80,8 @@ public class IndexFiles {
 
 
             // Call the doStemming() method and perform stemming on the contents
-            String stemmedContents = doStemming(parsedContents);
+            //String stemmedContents = doStemming(parsedContents);
+            String stemmedContents = parsedContents;
 
             // add the contents of the file to a field named "contents"
             Field contentsField = new TextField("contents", stemmedContents, Field.Store.NO);
