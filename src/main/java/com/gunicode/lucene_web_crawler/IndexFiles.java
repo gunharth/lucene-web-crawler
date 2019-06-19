@@ -1,8 +1,12 @@
 package com.gunicode.lucene_web_crawler;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.CharArraySet;
+import org.apache.lucene.analysis.StopFilter;
+import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.standard.StandardTokenizer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
@@ -15,6 +19,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.tartarus.snowball.ext.PorterStemmer;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Paths;
 
 public class IndexFiles {
@@ -30,6 +35,11 @@ public class IndexFiles {
             // to lowercase and filters out stopwords
             //Analyzer analyzer = new StandardAnalyzer();
             Analyzer analyzer = new GermanAnalyzer();
+
+            CharArraySet stopSet = CharArraySet.copy(GermanAnalyzer.getDefaultStopSet());
+            stopSet.add("ritter");
+            System.out.print(stopSet);
+            //Analyzer analyzer = new GermanAnalyzer(stopSet);
 
             // IndexWriterConfig stores all the configuration parameters for IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
