@@ -1,6 +1,7 @@
 package com.gunicode.lucene_web_crawler;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -27,7 +28,8 @@ public class IndexFiles {
 
             // Initialize a StandardAnalyzer object. This analyzer converts tokens
             // to lowercase and filters out stopwords
-            Analyzer analyzer = new StandardAnalyzer();
+            //Analyzer analyzer = new StandardAnalyzer();
+            Analyzer analyzer = new GermanAnalyzer();
 
             // IndexWriterConfig stores all the configuration parameters for IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);

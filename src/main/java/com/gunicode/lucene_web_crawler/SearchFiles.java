@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -33,12 +34,14 @@ public class SearchFiles {
             // Initialize the index searcher
             IndexSearcher searcher = new IndexSearcher(reader);
 
-            Analyzer analyzer = new StandardAnalyzer();
+            //Analyzer analyzer = new StandardAnalyzer();
+            Analyzer analyzer = new GermanAnalyzer();
 
             // MultifiedQueryParser can search multiple fields in the document objects
             // using the same parser instance.
             MultiFieldQueryParser mfparser = new MultiFieldQueryParser(fields, analyzer);
-            //mfparser.setDefaultOperator(QueryParserBase.AND_OPERATOR);
+            mfparser.setDefaultOperator(QueryParserBase.AND_OPERATOR);
+            //mfparser.setDefaultOperator(QueryParserBase.OR_OPERATOR);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
