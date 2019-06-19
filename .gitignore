@@ -1,6 +1,7 @@
 search-index/
 target/
 .DS_STORE
+.idea/
 
 ### JetBrains ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
