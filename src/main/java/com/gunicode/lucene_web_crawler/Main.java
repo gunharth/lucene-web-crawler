@@ -6,7 +6,7 @@ public class Main
     {
         if (!args[0].equals("") && !args[1].equals("") && !args[2].equals("") && !args[3].equals("")) {
 
-            // Get seed url, crawl depth, index path, and query string from cmd line arguments
+            // Get seedUrl, crawlDepth, index path, and search query from cmd line arguments
             String seedUrl = args[0];
             int crawlDepth = Integer.parseInt(args[1]);
             String indexPath = args[2];
@@ -14,7 +14,7 @@ public class Main
             System.out.println(seedUrl);
 
             // create a crawler object and call the startCrawl method by passing in
-            // the seed url, crawl depth, and index path
+            // the seedUrl, crawlDepth, and index path
             Crawler crawler = new Crawler();
             crawler.startCrawl(seedUrl, crawlDepth, indexPath);
 
