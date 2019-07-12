@@ -61,6 +61,30 @@ public class Crawler {
         }
     }
 
+    private SSLSocketFactory socketFactory() {
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return null;
+            }
+
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+            }
+
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+            }
+        }};
+
+        try {
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            return sslContext.getSocketFactory();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Failed to create a SSL socket factory", e);
+        } catch (KeyManagementException e) {
+            throw new RuntimeException("Failed to create a SSL socket factory", e);
+        }
+    }
+
     private void crawl(String url, int depth, IndexWriter writer) {
         // if url is null after normalization
         if (url == null) {
@@ -71,6 +95,7 @@ public class Crawler {
         org.jsoup.nodes.Document doc = null;
         try {
             Connection con = Jsoup.connect(url)
+                    //.sslSocketFactory(this.socketFactory())
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36")
                     .ignoreHttpErrors(true)
                     .timeout(20000);
@@ -80,13 +105,11 @@ public class Crawler {
             }
         } catch (HttpStatusException e) {
             System.out.println("URL could not be parsed. " + e);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Jsoup exception while connecting to url: " + url + ". " + e);
         }
 
         if (doc != null) {
-
             // index the current doc
             System.out.println("Adding " + url);
             // jsoup settings
@@ -94,7 +117,13 @@ public class Crawler {
             doc.select("div#header").remove();
             doc.select("div#navigation").remove();
             doc.select("div.tab").remove();
-            doc.select("div#footer").remove(); */
+            doc.select("div#simple").remove();
+            doc.select("div#ext").remove();
+            doc.select("div#info").remove();
+            doc.select("div.dialogtext4").remove();
+            doc.select("div#footer").remove();
+            doc.select("canvas").remove();
+            doc.select("script").remove(); */
 
             IndexFiles.indexDoc(writer, doc);
 

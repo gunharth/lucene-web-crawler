@@ -11,7 +11,6 @@ public class Main
             int crawlDepth = Integer.parseInt(args[1]);
             String indexPath = args[2];
             String query = args[3];
-            System.out.println(seedUrl);
 
             // create a crawler object and call the startCrawl method by passing in
             // the seedUrl, crawlDepth, and index path

@@ -35,12 +35,20 @@ public class IndexFiles {
             // to lowercase and filters out stopwords
             Analyzer analyzer = new StandardAnalyzer();
 
-            // GermanAnalyzer and add custom stop words
+            // StandardAnalyzer with German stop words
             /* CharArraySet stopSet = CharArraySet.copy(GermanAnalyzer.getDefaultStopSet());
             System.out.println(stopSet);
-            stopSet.add("ritter");
-            System.out.println(stopSet);
-            Analyzer analyzer = new GermanAnalyzer(stopSet); */
+            stopSet.add("zusammenarbeit");
+            stopSet.add("wappenkartei");
+            Analyzer analyzer = new StandardAnalyzer(stopSet); */
+
+            // Analyzer analyzer = new GermanAnalyzer();
+
+            // GermanAnalyzer and add custom stop words
+            /* CharArraySet stopSet = CharArraySet.copy(GermanAnalyzer.getDefaultStopSet());
+            stopSet.add("wappenträger");
+            stopSet.add("wappenkartei");
+            Analyzer analyzer = new GermanAnalyzer(stopSet);*/
 
             // IndexWriterConfig stores all the configuration parameters for IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
@@ -48,7 +56,8 @@ public class IndexFiles {
             if (!DirectoryReader.indexExists(dir)) {
                 // A new index will be created and any existing indexes will be removed
                 iwc.setOpenMode(OpenMode.CREATE);
-            } else {
+                //iwc.setOpenMode(OpenMode.CREATE_OR_APPEND);
+             } else {
                 // An index already exists so we use it
                 return null;
             }
@@ -76,7 +85,7 @@ public class IndexFiles {
             document.add(titleField);
 
             String stemmedContents = parsedContents;
-            // Call the doPorterStemming() method and perform stemming on the contents
+            // Call the doPorterStemming() method and perform porter stemming on the contents
             //String stemmedContents = doPorterStemming(parsedContents);
 
             // add the contents of the file to a field named "contents"

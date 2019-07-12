@@ -34,22 +34,21 @@ public class SearchFiles {
             // Initialize the index searcher
             IndexSearcher searcher = new IndexSearcher(reader);
 
-            //Analyzer analyzer = new StandardAnalyzer();
-            Analyzer analyzer = new GermanAnalyzer();
+            Analyzer analyzer = new StandardAnalyzer();
+            // Analyzer analyzer = new GermanAnalyzer();
 
             // MultifiedQueryParser can search multiple fields in the document objects
             // using the same parser instance.
             MultiFieldQueryParser mfparser = new MultiFieldQueryParser(fields, analyzer);
-            mfparser.setDefaultOperator(QueryParserBase.AND_OPERATOR);
+            //mfparser.setDefaultOperator(QueryParserBase.AND_OPERATOR);
             //mfparser.setDefaultOperator(QueryParserBase.OR_OPERATOR);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
             // Parse the query and store it in a Query Object
             Query q = mfparser.parse(query);
-            System.out.print(q);
-
-            System.out.println("\nSearching For: " + query + "\n");
+            System.out.println("\nSearching For: " + query);
+            System.out.println(q);
 
             // Call the method that executes the search
             executeSearch(in, searcher, q, maxHitsDisplay);

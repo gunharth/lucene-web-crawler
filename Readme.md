@@ -6,3 +6,5 @@
 How can we view the lucene index?  
 Demonstrate Luke lucene-folder/luke/ run ./luke.sh
 
+Thanks to https://github.com/tchanda90/lucene-web-crawler for pushing me into the right direction.
+
